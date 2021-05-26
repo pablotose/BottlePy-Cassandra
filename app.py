@@ -29,9 +29,11 @@ def add_animal():
 		localidad = str(request.params.get('localidad'))
 		edad_animal = int(request.params.get('edad'))
 		tipo_animal = str(request.params.get('tipo'))
+		raza_animal = str(request.params.get('raza'))
+		telefono_duenno = int(request.params.get('telefono'))
 		session = cluster.connect()
 		session.set_keyspace("db")
-		session.execute("INSERT INTO animales (id_animal, nombre_animal, localidad, edad_animal, tipo_animal) values (now(), '{}','{}',{},'{}')".format(nombre_animal, localidad, edad_animal, tipo_animal))
+		session.execute("INSERT INTO animales (id_animal, nombre_animal, localidad, edad_animal, tipo_animal, raza_animal, telefono_duenno ) values (now(), '{}','{}',{},'{}','{}',{})".format(nombre_animal, localidad, edad_animal, tipo_animal, raza_animal, telefono_duenno))
 	
 		return redirect('/')
 
